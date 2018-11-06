@@ -1,0 +1,48 @@
+<div *ngIf="brand" class="container">
+  <div class="row" style="padding-top: 20px;">
+    <section class="col-md-4">
+      <img class="img-fluid img-thumbnail" [src]="brand.PhotoURL">
+    </section>
+
+    <div class="container-fluid col-md-8">
+      <section>
+        <h2>
+          <b>{{brand.BrandName}}
+          </b>
+        </h2>
+        <p> {{brand.Description}}</p>
+      </section>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <h3>Top Models</h3>
+    <br>
+  </div>
+
+  <div class="row round2">
+
+    <div *ngFor="let model of topModels" class="col-md-3 text-white">
+      <img class="img-fluid img-thumbnail object-fit_contain" routerLink="model/{{model.ModelId}}" [src]="model.PhotoURL">
+      <ul *ngIf="authService.getToken() !== null">
+        <ul *ngIf="isFavoriteModel(model.ModelId);else notFavorite">
+          <a class="icon pull-right" (click)="deleteFavoriteModel(model.ModelId)">
+            <i id="favorite" class="material-icons pull-right down">favorite</i>
+          </a>
+        </ul>
+        <ng-template #notFavorite>
+          <a class="icon pull-right" (click)="setFavoriteModel(model.ModelId)">
+            <i id="favorite" class="material-icons pull-right down">favorite_border</i>
+          </a>
+        </ng-template>
+      </ul>
+      <h5 class="text-center">
+        <a routerLink="model/{{model.ModelId}}">{{brand.BrandName + ' ' + model.ModelName}}</a>
+      </h5>
+    </div>
+  </div>
+  <div id="button-div">
+    <button class="btn btn-primary float-left down" routerLink="">Back</button>
+    <button class="btn btn-primary float-right down" routerLink="models">Show More</button>
+  </div>
+</div>

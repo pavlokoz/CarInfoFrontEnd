@@ -1,0 +1,51 @@
+<h1 class="text-center"> Models of
+  <a routerLink="/brand/{{brandId}}">{{brandName}}</a>
+</h1>
+
+<div class="container">
+  <div *ngFor="let model of models" id="tile">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <img id="image" class="img-responsive img-thumbnail object-fit_contain" [src]="model.PhotoURL" />
+        <ul *ngIf="authService.getToken() !== null">
+          <ul *ngIf="isFavoriteModel(model.ModelId);else notFavorite">
+            <a class="icon pull-right" (click)="deleteFavoriteModel(model.ModelId)">
+              <i id="favorite" class="material-icons pull-right down">favorite</i>
+            </a>
+          </ul>
+          <ng-template #notFavorite>
+            <a class="icon pull-right" (click)="setFavoriteModel(model.ModelId)">
+              <i id="favorite" class="material-icons pull-right down">favorite_border</i>
+            </a>
+          </ng-template>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+
+        <div class="row">
+          <section class="col-xs-12 col-sm-8">
+            <h3>
+              <a routerLink="/brand/{{brandId}}/model/{{model.ModelId}}">{{model.ModelName}}</a>
+            </h3>
+          </section>
+        </div>
+
+        <div class="row">
+          <section class="col-xs-12" style="padding-left: 15px">
+            <h6>{{model.TypeName}}</h6>
+          </section>
+        </div>
+        <div class="row">
+          <section class="col-xs-12" style="padding-left: 15px">
+            <h6>{{model.CarTypeName}}</h6>
+          </section>
+        </div>
+
+        <button class="btn btn-primary pull-right pull-down" routerLink="/brand/{{brandId}}/model/{{model.ModelId}}">
+          Show More
+        </button>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>

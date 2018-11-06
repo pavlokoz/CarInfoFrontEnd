@@ -1,0 +1,13 @@
+<div>
+  <div class="container">
+    <div class="row" *ngIf="user != null">
+      <div class="col-xs-12 col-sm-6 col-lg-4 text-center">
+        <img class="img-responsive img-thumbnail object-fit_contain" src="../assets/img/profile/Default Profile Image.png">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-8 user-info">
+        <h5>{{user.FullName}}</h5>
+        <h5>{{user.Email}}</h5>
+      </div>
+    </div>
+  </div>
+</div>

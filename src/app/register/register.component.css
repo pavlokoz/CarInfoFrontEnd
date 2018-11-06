@@ -1,0 +1,9 @@
+input.ng-invalid:focus {
+    -webkit-box-shadow: 0 0 0 0.1rem red;
+    box-shadow: 0 0 0 0.1rem red;
+}
+
+input.ng-valid:focus {
+    -webkit-box-shadow: 0 0 0 0.1rem green;
+    box-shadow: 0 0 0 0.1rem green;
+}

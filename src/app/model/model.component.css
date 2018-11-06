@@ -1,0 +1,16 @@
+.icon {   
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    transition: .3s ease;
+    z-index: 2;  
+}
+
+#favorite.material-icons 
+{
+    font-size: 36px;
+    cursor: pointer;
+    border: 3px;
+    color: black;
+    z-index: 2;
+}

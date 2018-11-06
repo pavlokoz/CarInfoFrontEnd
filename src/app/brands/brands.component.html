@@ -1,0 +1,25 @@
+<h1 class="text-center">Brands</h1>
+<div class="container">
+  <div *ngFor="let brand of brands" id="tile">
+    <div class="row">
+      <div class="col-lg-4 text-center">
+        <img [src]="brand.PhotoURL" class="img-fluid img-thumbnail object-fit_contain">        
+      </div>
+      <div class="col-xs-12 col-lg-8">
+        <div class="row">
+          <section class="col-xs-12 col-sm-8">
+            <h3>
+              <a routerLink="/brand/{{brand.BrandId}}">{{brand.BrandName}}</a>
+            </h3>
+          </section>
+        </div>
+        <article>
+          <br />
+          <p style='text-align:justify'>{{brand.Description}}</p>
+        </article>
+        <button class="btn btn-primary pull-right pull-down" routerLink="/brand/{{brand.BrandId}}">Show more</button>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>

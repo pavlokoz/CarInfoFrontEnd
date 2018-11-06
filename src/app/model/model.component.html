@@ -1,0 +1,51 @@
+<div class="container" *ngIf="!!model">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+      <img class="img-responsive img-thumbnail" [src]="model.PhotoURL">
+      <ul *ngIf="authService.getToken() !== null">
+        <ul *ngIf="isFavorite;else notFavorite">
+          <a class="icon pull-right" (click)="deleteFavoriteModel(model.ModelId)">
+            <i id="favorite" class="material-icons pull-right down">favorite</i>
+          </a>
+        </ul>
+        <ng-template #notFavorite>
+          <a class="icon pull-right" (click)="setFavoriteModel(model.ModelId)">
+            <i id="favorite" class="material-icons pull-right down">favorite_border</i>
+          </a>
+        </ng-template>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <div class="row">
+        <div class="col-xs-6">
+          <h3>{{model.BrandName + ' ' + model.ModelName}}
+          </h3>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <section class="col-xs-12" style="padding-left: 15px">
+          <h6>{{model.TypeName}}</h6>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col-xs-12" style="padding-left: 15px">
+          <h6>{{model.CarTypeName}}</h6>
+        </section>
+      </div>
+      <article>
+        <p>{{model.AddInfo}}</p>
+      </article>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <h3>Photo Gallery</h3>
+    <div class="row round2">
+      <div *ngFor="let photo of model.Photos" class="col-md-3 text-white">
+        <img class="img-fluid img-thumbnail object-fit_contain" [src]="photo">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="">
+    <img id="logo-link" alt="Brand" src="../assets/img/main/car.png">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample01">
+    <ul *ngIf="authService.token == null;else authorized" class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/brands">
+          <span class="glyphicon"></span>Brands</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="signUp()">
+          <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+      </li>
+      <li class="divider"></li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="signIn()">
+          <span class="glyphicon glyphicon-log-in"></span> Sign In</a>
+      </li>
+    </ul>
+    <ng-template #authorized>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/brands">
+            <span class="glyphicon"></span>Brands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">
+            <span class="glyphicon glyphicon-user"></span>Profile</a>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" (click)="logout()">
+            <span class="glyphicon glyphicon-log-in"></span> Log Out</a>
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+</nav>
